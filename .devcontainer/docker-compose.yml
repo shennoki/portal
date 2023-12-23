@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: astro
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ../app:/workspaces/container/app
+    ports:
+      - "4321:4321"
+    user: node
+    stdin_open: true
+    tty: true
