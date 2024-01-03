@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  body : string;
+  href : string;
+}
+
+const { href, title, body } = Astro.props;
+---
+
+<li class="li">Learn how Astro works and explore the official API docs.</li>
+
+<style>
+  .li {
+    width          : 30vw;
+    min-width      : 500px;
+    height         : 100vh;
+    padding        : 3rem;
+    background     : rgba(255, 255, 255, .25);
+    backdrop-filter: blur( 2.5px );
+    box-shadow     : 0 8px 32px 0 rgba(31, 38, 135, .37);
+    position       : absolute;
+    top            : 0;
+    right          : 0;
+  }
+</style>

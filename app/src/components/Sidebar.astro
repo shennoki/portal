@@ -1,0 +1,32 @@
+---
+import List from './List.astro';
+import Wave from './Wave.astro';
+---
+
+<div class="container">
+  <ul>
+    <List
+      href="https://docs.astro.build/"
+      title="Documentation"
+      body="Learn how Astro works and explore the official API docs."
+    />
+  </ul>
+  <div>
+
+  </div>
+  <Wave />
+</div>
+
+<style>
+  .container {
+    width          : 30vw;
+    min-width      : 500px;
+    height         : 100vh;
+    padding        : 3rem;
+    background     : rgba(255, 255, 255, .05);
+    backdrop-filter: blur(3px);
+    position       : absolute;
+    top            : 0;
+    right          : 0;
+  }
+</style>
