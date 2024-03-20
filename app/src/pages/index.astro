@@ -1,25 +1,24 @@
 ---
-import Panel from "../components/Panel.astro";
-import Sidebar from "../components/Sidebar.astro";
-import Layout from "../layouts/Layout.astro";
+import Signboard from '../components/Signboard.astro'
+import Layout from '../layouts/Layout.astro'
 
 const page = {
-  title      : 'SHINKI.NET',
-  description: 'SHINKI.NETへようこそ。ここは、ポートフォリオを管理するガレージサイトや、備忘録をまとめた技術ブログなど、私が運営しているWebサイトの入口となるべく作られたポータルサイトです。',
-  schema     : [],
-};
+  title: 'SHINKI.NET',
+  description:
+    'SHINKI.NETへようこそ。ここは、ポートフォリオを管理するガレージサイトや、備忘録をまとめた技術ブログなど、私が運営しているWebサイトの入口となるべく作られたポータルサイトです。',
+  schema: [],
+}
 ---
 
 <Layout page={page}>
   <main>
-    <Panel />
-    <Sidebar />
+    <Signboard />
   </main>
 </Layout>
 
 <style>
   main {
-    width   : 100%;
-    position: relative;
+    width: 100%;
+    height: 100%;
   }
 </style>
