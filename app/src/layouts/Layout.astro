@@ -1,51 +1,90 @@
 ---
+import '../styles/destyle.css'
+
 interface Props {
-  title: string;
+  page: {
+    title: string
+    description: string
+    schema: never[]
+  }
 }
 
-const { title } = Astro.props;
+const { page } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja" prefix="og: https://ogp.me/ns#" itemscope itemtype="https://schema.org/WebPage">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="canonical" href={Astro.site} />
+    <title>{page.title}</title>
+    <meta name="description" content={page.description} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={page.title} />
+    <meta property="og:type" content={'website'} />
+    <meta property="og:url" content={Astro.site} />
+    <meta property="og:title" content={page.title} />
+    <meta property="og:description" content={page.description} />
+    <meta property="og:image" content={new URL('/images/og-img.jpg', Astro.site)} />
+    <meta name="twitter:site" content="@_shinnoki" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="theme-color" content="#4c566a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={page.title} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/images/icons/android-chrome-144x144.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#495733" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preload" href="/fonts/Spica-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/Spica-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
   </head>
   <body>
     <slot />
   </body>
+  <script>
+    console.info('%c>> Source is https://github.com/shennoki/portal', 'padding:20px 0; font-weight:bold;')
+  </script>
 </html>
+
 <style is:global>
   :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
+    --f-sans: 'Spica', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    --f-mono: 'Spica', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    --c-text: #4b556a;
+  }
+  @font-face {
+    font-family: 'Spica';
+    src: url('/fonts/Spica-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Spica';
+    src: url('/fonts/Spica-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  * {
+    box-sizing: border-box;
   }
   html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
+    font-size: 62.5%;
   }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: var(--c-text);
+    font: 1.4rem / 1.6 var(--f-sans);
+    letter-spacing: 0.02em;
+    background: radial-gradient(#eceff4 0%, #e5e9f0 50%, #d8dee9 100%);
+    overflow: hidden;
   }
 </style>

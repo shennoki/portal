@@ -1,0 +1,18 @@
+{
+  "name": "SHINKI.NET - 時間を節約するためのポータルサイト",
+  "short_name": "SHINKI.NET",
+  "description": "SHINKI.NETへようこそ。ここは、ポートフォリオや技術ブログをまとめたポータルサイトです。",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#495733",
+  "theme_color": "#e1ebca",
+  "lang": "ja",
+  "icons": [
+    {
+        "src": "/images/icons/android-chrome-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }
+  ]
+}
