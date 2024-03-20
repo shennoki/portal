@@ -1,5 +1,6 @@
 ---
-import '../styles/destyle.css'
+import '../styles/destyle.scss'
+import '../styles/mixins.scss'
 
 interface Props {
   page: {
@@ -56,6 +57,7 @@ const { page } = Astro.props
     --f-sans: 'Spica', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     --f-mono: 'Spica', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     --c-text: #4b556a;
+    --c-bg: #eceff4;
   }
   @font-face {
     font-family: 'Spica';
