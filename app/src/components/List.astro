@@ -1,0 +1,109 @@
+---
+import GithubIcon from '@assets/github.svg'
+import { Image } from 'astro:assets'
+---
+
+<div class="container">
+  <section class="section" style="--accent-color:#81A1C1">
+    <div class="icon">
+      <Image src={GithubIcon} alt="GitHub" class="icon-github" />
+    </div>
+    <h2 class="title">GITHUB</h2>
+    <p class="descr">基本的に成果物はここに置いています。</p>
+    <p class="descr">
+      ポートフォリオ以外はだいたいプライベートリポジトリで管理しているので、あまり参考にならないかもしれませんが、ご容赦ください。
+    </p>
+    <a href="https://github.com/shennoki" target="_blank" rel="noopener noreferrer nofollow" class="link"></a>
+  </section>
+
+  <section class="section" style="--accent-color:#A3BE8C">
+    <div class="icon"></div>
+    <h2 class="title">TECH BLOG</h2>
+    <p class="descr">フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。</p>
+    <p class="descr">わかりやすい記事を心掛けて更新しているので、ドキュメントの確認やバグフィックスのお供にどうぞ。</p>
+    <a href="https://blog.shinki.net/" target="_blank" rel="noopener noreferrer" class="link"></a>
+  </section>
+
+  <section class="section" style="--accent-color:#EBCB8B">
+    <div class="icon"></div>
+    <h2 class="title">PORTFOLIO</h2>
+    <p class="descr">整備中です&#128295;</p>
+  </section>
+
+  <section class="section" style="--accent-color:#BF616A">
+    <div class="icon"></div>
+    <h2 class="title">SNS</h2>
+    <p class="descr">技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。</p>
+    <p class="descr">ご連絡はこちらからお願いいたします。</p>
+    <a href="https://twitter.com/_shinnoki" target="_blank" rel="noopener noreferrer nofollow" class="link"></a>
+  </section>
+</div>
+
+<style lang=”scss”>
+  .container {
+    width          : 90%;
+    max-width      : 1350px;
+    margin         : 40px auto 0;
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-around;
+    @include mq(sm) {
+
+    }
+    @include mq(md) {
+
+    }
+  }
+  .section {
+    width: 260px;
+    .icon {
+      width        : 90px;
+      margin       : 0 auto 55px;
+      border       : 3px solid var(--accent-color);
+      border-radius: 50%;
+      box-shadow   : var(--s-inner);
+      position     : relative;
+      aspect-ratio : 1;
+      &::before {
+        content     : '';
+        height      : 22px;
+        border-right: 2px dotted var(--c-text);
+        position    : absolute;
+        top         : calc(100% + 15px);
+        left        : 50%;
+        transform   : translateX(-50%);
+      }
+      &::after {
+        content      : '';
+        width        : 10px;
+        height       : 10px;
+        background   : var(--accent-color);
+        border-radius: 50%;
+        position     : absolute;
+        top          : calc(100% + 45px);
+        left         : 50%;
+        transform    : translateX(-50%);
+      }
+      img {
+        width    : 60px;
+        height   : 60px;
+        position : absolute;
+        top      : 50%;
+        left     : 50%;
+        transform: translate(-50%, -50%);
+      }
+      .icon-github {
+        filter: brightness(0) saturate(100%) invert(65%) sepia(7%) saturate(1677%) hue-rotate(169deg) brightness(97%) contrast(85%) drop-shadow(var(--s-drop));
+      }
+    }
+    .title {
+      padding   : 1.5rem 0 0;
+      font-size : 2.5rem;
+      text-align: center;
+    }
+    .descr {
+      margin : 1.2rem auto 0;
+      display: table;
+    }
+  }
+</style>

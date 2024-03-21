@@ -1,57 +1,16 @@
 ---
-import { Image } from 'astro:assets'
-import Logo from '../assets/logo.png'
+import List from '@components/List.astro'
+import Logo from '@components/Logo.astro'
 ---
 
 <main class="main">
-  <div class="container">
-    <div class="horizontal">
-      <div class="vertical">
-        <a href="/">
-          <Image src={Logo} alt="SHINKI.NET" />
-        </a>
-      </div>
-    </div>
-  </div>
+  <Logo />
+  <List />
 </main>
 
-<style>
+<style lang=”scss”>
   .main {
     width: 100%;
     height: 100%;
-  }
-  .container {
-    width: 100%;
-    max-width: 600px;
-    height: 30%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .horizontal {
-    animation: horizontal 1s ease-in-out infinite alternate;
-  }
-  .vertical {
-    animation: vertical 1.7s ease-in-out infinite alternate;
-  }
-  .title {
-    font-size: 13vw;
-  }
-  @keyframes horizontal {
-    0% {
-      transform: translateX(-3px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  }
-  @keyframes vertical {
-    0% {
-      transform: translateY(-2px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
   }
 </style>

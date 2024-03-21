@@ -7,7 +7,13 @@ const thisYear = new Date().getFullYear()
   <small class="small">2020 - {thisYear} Shinki all rights reserved.</small>
 
   {/* Wave SVG */}
-  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="auto" class="waves" viewBox="0 24 150 28">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+    shape-rendering="auto"
+    class="waves"
+    viewBox="0 24 150 28"
+  >
     <defs>
       <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
     </defs>
@@ -17,7 +23,13 @@ const thisYear = new Date().getFullYear()
   </svg>
 
   {/* Ship SVG */}
-  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" shape-rendering="auto" class="ships" viewBox="0 0 662.000000 1280.000000">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="none"
+    shape-rendering="auto"
+    class="ships"
+    viewBox="0 0 662.000000 1280.000000"
+  >
     <defs>
       <path
         id="gentle-ship"
@@ -64,14 +76,18 @@ const thisYear = new Date().getFullYear()
   </svg>
 </footer>
 
-<style>
+<style lang="scss">
   .footer {
     width: 100%;
     padding: 15px 0;
+    margin: 150px 0 0;
     background: var(--c-text);
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
+    @include mq(md) {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
   }
   .small {
     color: var(--c-bg);
@@ -88,9 +104,6 @@ const thisYear = new Date().getFullYear()
     bottom: 100%;
     left: 0;
     z-index: -1;
-    @include mq(md) {
-      height: 60px;
-    }
   }
   .waves use {
     animation: move-forever-wave 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
@@ -98,17 +111,19 @@ const thisYear = new Date().getFullYear()
     animation-duration: 7s;
   }
   .ships {
-    width: 80px;
+    width: 60px;
     color: var(--c-text);
     position: absolute;
-    bottom: 140%;
+    bottom: 145%;
     right: 10%;
     z-index: -1;
     animation: move-forever-ship 25s ease-in-out infinite;
-    animation-delay: -6s;
+    animation-delay: -6.5s;
     animation-duration: 7s;
     @include mq(md) {
-      height: 60px;
+      width: 80px;
+      animation-delay: -6.2s;
+      bottom: 140%;
     }
   }
   @keyframes move-forever-wave {
@@ -121,13 +136,13 @@ const thisYear = new Date().getFullYear()
   }
   @keyframes move-forever-ship {
     0% {
-      transform: translate3d(0, 0px, 0) rotate(-5deg) scale(-1, 1);
+      transform: translate3d(0, 5px, 0) rotate(-6deg) scale(-1, 1);
     }
     50% {
       transform: translate3d(-20px, 30px, 0) rotate(-10deg) scale(-1, 1);
     }
     100% {
-      transform: translate3d(0, 0px, 0) rotate(-5deg) scale(-1, 1);
+      transform: translate3d(0, 5px, 0) rotate(-6deg) scale(-1, 1);
     }
   }
 </style>
