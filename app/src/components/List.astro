@@ -1,5 +1,8 @@
 ---
+import AlgorithmIcon from '@assets/algorithm.svg'
+import CloudIcon from '@assets/cloud.svg'
 import GithubIcon from '@assets/github.svg'
+import XIcon from '@assets/x.svg'
 import { Image } from 'astro:assets'
 ---
 
@@ -17,7 +20,9 @@ import { Image } from 'astro:assets'
   </section>
 
   <section class="section" style="--accent-color:#A3BE8C">
-    <div class="icon"></div>
+    <div class="icon">
+      <Image src={AlgorithmIcon} alt="BreathNote" class="icon-breathnote" />
+    </div>
     <h2 class="title">TECH BLOG</h2>
     <p class="descr">フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。</p>
     <p class="descr">わかりやすい記事を心掛けて更新しているので、ドキュメントの確認やバグフィックスのお供にどうぞ。</p>
@@ -25,13 +30,17 @@ import { Image } from 'astro:assets'
   </section>
 
   <section class="section" style="--accent-color:#EBCB8B">
-    <div class="icon"></div>
+    <div class="icon">
+      <Image src={CloudIcon} alt="Portfolio" class="icon-portfolio" />
+    </div>
     <h2 class="title">PORTFOLIO</h2>
     <p class="descr">整備中です&#128295;</p>
   </section>
 
   <section class="section" style="--accent-color:#BF616A">
-    <div class="icon"></div>
+    <div class="icon">
+      <Image src={XIcon} alt="SNS" class="icon-sns" />
+    </div>
     <h2 class="title">SNS</h2>
     <p class="descr">技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。</p>
     <p class="descr">ご連絡はこちらからお願いいたします。</p>
@@ -42,8 +51,8 @@ import { Image } from 'astro:assets'
 <style lang=”scss”>
   .container {
     width          : 90%;
-    max-width      : 1350px;
-    margin         : 40px auto 0;
+    max-width      : 1450px;
+    margin         : 90px auto 0;
     display        : flex;
     flex-wrap      : wrap;
     justify-content: space-around;
@@ -86,7 +95,6 @@ import { Image } from 'astro:assets'
       }
       img {
         width    : 60px;
-        height   : 60px;
         position : absolute;
         top      : 50%;
         left     : 50%;
@@ -94,6 +102,17 @@ import { Image } from 'astro:assets'
       }
       .icon-github {
         filter: brightness(0) saturate(100%) invert(65%) sepia(7%) saturate(1677%) hue-rotate(169deg) brightness(97%) contrast(85%) drop-shadow(var(--s-drop));
+      }
+      .icon-breathnote {
+        filter: brightness(0) saturate(100%) invert(74%) sepia(37%) saturate(258%) hue-rotate(49deg) brightness(93%) contrast(86%) drop-shadow(var(--s-drop));
+        left  : 53%;
+      }
+      .icon-portfolio {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(13%) saturate(7466%) hue-rotate(314deg) brightness(89%) contrast(110%) drop-shadow(var(--s-drop));
+      }
+      .icon-sns {
+        filter: brightness(0) saturate(100%) invert(46%) sepia(9%) saturate(2903%) hue-rotate(305deg) brightness(96%) contrast(80%) drop-shadow(var(--s-drop));
+        width: 45px;
       }
     }
     .title {
