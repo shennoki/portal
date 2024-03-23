@@ -16,6 +16,11 @@ import { Image } from 'astro:assets'
     <p class="descr">
       ポートフォリオ以外はだいたいプライベートリポジトリで管理しているので、あまり参考にならないかもしれませんが、ご容赦ください。
     </p>
+    <div class="loader">
+      <div class="loader-inner1"></div>
+      <div class="loader-inner2"></div>
+      <div class="loader-inner3"></div>
+    </div>
     <a href="https://github.com/shennoki" target="_blank" rel="noopener noreferrer nofollow" class="link"></a>
   </section>
 
@@ -26,6 +31,11 @@ import { Image } from 'astro:assets'
     <h2 class="title">TECH BLOG</h2>
     <p class="descr">フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。</p>
     <p class="descr">わかりやすい記事を心掛けて更新しているので、ドキュメントの確認やバグフィックスのお供にどうぞ。</p>
+    <div class="loader">
+      <div class="loader-inner1"></div>
+      <div class="loader-inner2"></div>
+      <div class="loader-inner3"></div>
+    </div>
     <a href="https://blog.shinki.net/" target="_blank" rel="noopener noreferrer" class="link"></a>
   </section>
 
@@ -34,7 +44,12 @@ import { Image } from 'astro:assets'
       <Image src={CloudIcon} alt="Portfolio" class="icon-portfolio" />
     </div>
     <h2 class="title">PORTFOLIO</h2>
-    <p class="descr">整備中です&#128295;</p>
+    <p class="descr-center">整備中です&#128295;</p>
+    <div class="loader">
+      <div class="loader-inner1"></div>
+      <div class="loader-inner2"></div>
+      <div class="loader-inner3"></div>
+    </div>
   </section>
 
   <section class="section" style="--accent-color:#BF616A">
@@ -44,85 +59,244 @@ import { Image } from 'astro:assets'
     <h2 class="title">SNS</h2>
     <p class="descr">技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。</p>
     <p class="descr">ご連絡はこちらからお願いいたします。</p>
+    <div class="loader">
+      <div class="loader-inner1"></div>
+      <div class="loader-inner2"></div>
+      <div class="loader-inner3"></div>
+    </div>
     <a href="https://twitter.com/_shinnoki" target="_blank" rel="noopener noreferrer nofollow" class="link"></a>
   </section>
 </div>
 
-<style lang=”scss”>
+<style lang="scss">
   .container {
-    width          : 90%;
-    max-width      : 1450px;
-    margin         : 90px auto 0;
-    display        : flex;
-    flex-wrap      : wrap;
+    width: 95%;
+    max-width: 1450px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    align-items: flex-start;
     @include mq(sm) {
-
+      align-items: normal;
     }
-    @include mq(md) {
-
+    @include mq(lg) {
+      margin: 60px auto 0;
     }
   }
   .section {
-    width: 260px;
+    width: 95%;
+    max-width: 300px;
+    padding: 1.5em 1.5em 5em;
+    margin: 1.5em auto 0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.6s cubic-bezier(0.16, 0.5, 0.43, 1);
+    @include mq(sm) {
+      width: 46%;
+    }
+    @include mq(md) {
+      margin: 1.6em 0 0;
+    }
+    @include mq(lg) {
+      width: 23%;
+      margin: 0;
+    }
     .icon {
-      width        : 90px;
-      margin       : 0 auto 55px;
-      border       : 3px solid var(--accent-color);
+      width: 90px;
+      margin: 0 auto 55px;
+      border: 3px solid var(--accent-color);
       border-radius: 50%;
-      box-shadow   : var(--s-inner);
-      position     : relative;
-      aspect-ratio : 1;
+      box-shadow: var(--s-inner);
+      position: relative;
+      aspect-ratio: 1;
       &::before {
-        content     : '';
-        height      : 22px;
-        border-right: 2px dotted var(--c-text);
-        position    : absolute;
-        top         : calc(100% + 15px);
-        left        : 50%;
-        transform   : translateX(-50%);
+        content: '';
+        height: 22px;
+        border-right: 2px dotted var(--accent-color);
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 50%;
+        transform: translateX(-50%);
       }
       &::after {
-        content      : '';
-        width        : 10px;
-        height       : 10px;
-        background   : var(--accent-color);
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: var(--accent-color);
         border-radius: 50%;
-        position     : absolute;
-        top          : calc(100% + 45px);
-        left         : 50%;
-        transform    : translateX(-50%);
+        position: absolute;
+        top: calc(100% + 45px);
+        left: 50%;
+        transform: translateX(-50%);
       }
       img {
-        width    : 60px;
-        position : absolute;
-        top      : 50%;
-        left     : 50%;
+        width: 60px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
       }
       .icon-github {
-        filter: brightness(0) saturate(100%) invert(65%) sepia(7%) saturate(1677%) hue-rotate(169deg) brightness(97%) contrast(85%) drop-shadow(var(--s-drop));
+        filter: brightness(0) saturate(100%) invert(65%) sepia(7%) saturate(1677%) hue-rotate(169deg) brightness(97%)
+          contrast(85%) drop-shadow(var(--s-drop));
       }
       .icon-breathnote {
-        filter: brightness(0) saturate(100%) invert(74%) sepia(37%) saturate(258%) hue-rotate(49deg) brightness(93%) contrast(86%) drop-shadow(var(--s-drop));
-        left  : 53%;
+        filter: brightness(0) saturate(100%) invert(74%) sepia(37%) saturate(258%) hue-rotate(49deg) brightness(93%)
+          contrast(86%) drop-shadow(var(--s-drop));
+        left: 53%;
       }
       .icon-portfolio {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(13%) saturate(7466%) hue-rotate(314deg) brightness(89%) contrast(110%) drop-shadow(var(--s-drop));
+        filter: brightness(0) saturate(100%) invert(100%) sepia(13%) saturate(7466%) hue-rotate(314deg) brightness(89%)
+          contrast(110%) drop-shadow(var(--s-drop));
       }
       .icon-sns {
-        filter: brightness(0) saturate(100%) invert(46%) sepia(9%) saturate(2903%) hue-rotate(305deg) brightness(96%) contrast(80%) drop-shadow(var(--s-drop));
+        filter: brightness(0) saturate(100%) invert(46%) sepia(9%) saturate(2903%) hue-rotate(305deg) brightness(96%)
+          contrast(80%) drop-shadow(var(--s-drop));
         width: 45px;
       }
     }
     .title {
-      padding   : 1.5rem 0 0;
-      font-size : 2.5rem;
+      padding: 1.5rem 0 0;
+      font-size: 2.5rem;
+      font-weight: bold;
       text-align: center;
+      @include mq(lg) {
+        padding: 1.8rem 0 0;
+      }
     }
     .descr {
-      margin : 1.2rem auto 0;
+      margin: 1.2rem auto 0;
+      @include mq(lg) {
+        margin: 1.5rem auto 0;
+      }
+    }
+    .descr-center {
+      margin: 1.2rem auto 0;
       display: table;
+      @include mq(lg) {
+        margin: 1.5rem auto 0;
+      }
+    }
+    .loader {
+      width: 1.9em;
+      height: 1.9em;
+      opacity: 0;
+      position: absolute;
+      bottom: 0.5em;
+      right: 0.4em;
+      .loader-inner1 {
+        width: 100%;
+        height: 100%;
+        border-bottom: 3px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        animation: rotate-one 1s linear infinite;
+      }
+      .loader-inner2 {
+        width: 100%;
+        height: 100%;
+        border-right: 3px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        animation: rotate-two 1s linear infinite;
+      }
+      .loader-inner3 {
+        width: 100%;
+        height: 100%;
+        border-top: 3px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+        animation: rotate-three 1s linear infinite;
+      }
+    }
+    .link {
+      display: block;
+      &:hover {
+        .loader {
+          opacity: 0.8;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+    &::before {
+      content: '';
+      width: 0em;
+      height: 0em;
+      background: var(--accent-color);
+      clip-path: polygon(100% 100%, 100% 0, 0 100%);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: 0.6s cubic-bezier(0.16, 0.5, 0.43, 1);
+    }
+    &::after {
+      content: '';
+      width: 10em;
+      height: 10em;
+      opacity: 0;
+      box-shadow:
+        inset 3px 3px 3px #4b556a20,
+        2.5px 2.5px 1px #4b556a33;
+      position: absolute;
+      bottom: -6em;
+      right: -6em;
+      transform: rotate(45deg);
+      transition: opacity 0.6s cubic-bezier(0.16, 0.5, 0.43, 1);
+    }
+    &:hover {
+      box-shadow: var(--s-neumo);
+      .loader {
+        transition: opacity 0.6s cubic-bezier(0.16, 0.5, 0.43, 1);
+        transition-delay: 0.6s;
+        opacity: 0.8;
+      }
+      &::before {
+        width: 5em;
+        height: 5em;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+  @keyframes rotate-one {
+    0% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+  }
+  @keyframes rotate-two {
+    0% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+  }
+  @keyframes rotate-three {
+    0% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
     }
   }
 </style>
