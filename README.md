@@ -1,6 +1,6 @@
 <h1 align="center">portal</h1>
 
-![og-image](public/images/og-img.jpg)
+![og-image](app/public/images/og-img.jpg)
 
 <p align="center">Portal site.</p>
 
