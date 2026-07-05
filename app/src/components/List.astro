@@ -1,13 +1,11 @@
 ---
 import AlgorithmIcon from '@assets/algorithm.svg'
-import CloudIcon from '@assets/cloud.svg'
 import GithubIcon from '@assets/github.svg'
 import XIcon from '@assets/x.svg'
 import { Image } from 'astro:assets'
 
 // 各カードの情報。マークアップと分離してデータ化している。
 // descriptions: <p class="descr"> として出力する段落群。
-// note: <p class="descr-center"> として出力する中央寄せテキスト（リンクなしカード用。HTML エンティティを含むため set:html で出力）。
 // link: <a class="link"> のリンク先。null の場合はリンク要素を出力しない。
 const cards = [
   {
@@ -17,10 +15,8 @@ const cards = [
     iconClass: 'icon-github',
     title: 'GITHUB',
     descriptions: [
-      '基本的に成果物はここに置いています。',
-      'ポートフォリオ以外はだいたいプライベートリポジトリで管理しているので、あまり参考にならないかもしれませんが、ご容赦ください。',
+      '成果物はここに置いています。だいたいプライベートリポジトリで管理しているので、あまり参考にならないかもしれませんが、ご容赦ください。',
     ],
-    note: null,
     link: { href: 'https://github.com/shennoki', rel: 'noopener noreferrer nofollow' },
   },
   {
@@ -29,22 +25,8 @@ const cards = [
     alt: 'BreathNote',
     iconClass: 'icon-breathnote',
     title: 'TECH BLOG',
-    descriptions: [
-      'フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。',
-      'わかりやすい記事を心掛けて更新しているので、ドキュメントの確認やバグフィックスのお供にどうぞ。',
-    ],
-    note: null,
+    descriptions: ['フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。'],
     link: { href: 'https://blog.shinki.net/', rel: 'noopener noreferrer' },
-  },
-  {
-    accent: '#EBCB8B',
-    icon: CloudIcon,
-    alt: 'Portfolio',
-    iconClass: 'icon-portfolio',
-    title: 'PORTFOLIO',
-    descriptions: [],
-    note: '整備中です&#128295;',
-    link: null,
   },
   {
     accent: '#BF616A',
@@ -53,11 +35,9 @@ const cards = [
     iconClass: 'icon-sns',
     title: 'SNS',
     descriptions: [
-      '技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。',
-      'ご連絡はこちらからお願いいたします。',
+      '技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。ご連絡はこちらからお願いいたします。',
     ],
-    note: null,
-    link: { href: 'https://twitter.com/_shinnoki', rel: 'noopener noreferrer nofollow' },
+    link: { href: 'https://x.com/_shinnoki', rel: 'noopener noreferrer nofollow' },
   },
 ]
 ---
@@ -73,7 +53,6 @@ const cards = [
         {card.descriptions.map((descr) => (
           <p class="descr">{descr}</p>
         ))}
-        {card.note && <p class="descr-center" set:html={card.note} />}
         <div class="loader">
           <div class="loader-inner1" />
           <div class="loader-inner2" />
@@ -164,10 +143,6 @@ const cards = [
           contrast(86%) drop-shadow(var(--s-drop));
         left: 53%;
       }
-      .icon-portfolio {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(13%) saturate(7466%) hue-rotate(314deg) brightness(89%)
-          contrast(110%) drop-shadow(var(--s-drop));
-      }
       .icon-sns {
         filter: brightness(0) saturate(100%) invert(46%) sepia(9%) saturate(2903%) hue-rotate(305deg) brightness(96%)
           contrast(80%) drop-shadow(var(--s-drop));
@@ -185,13 +160,6 @@ const cards = [
     }
     .descr {
       margin: 1.2rem auto 0;
-      @include mq(lg) {
-        margin: 1.5rem auto 0;
-      }
-    }
-    .descr-center {
-      margin: 1.2rem auto 0;
-      display: table;
       @include mq(lg) {
         margin: 1.5rem auto 0;
       }
