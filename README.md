@@ -9,15 +9,7 @@
 - Astro on AWS Amplify
 - TypeScript
 
-## Browser Support
-
-It has been checked to work with the following browsers.
-
-- Google Chrome
-- Firefox
-- Microsoft Edge
-- Safari
-
 ## Copyright and license
 
-This repository is No License. Any use, duplication, redistribution, etc. beyond the scope of the GitHub terms of use and copyright law is strictly prohibited.
+This repository is No License. Any use, duplication, redistribution, etc.  
+beyond the scope of the GitHub terms of use and copyright law is strictly prohibited.
