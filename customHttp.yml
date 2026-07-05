@@ -1,0 +1,23 @@
+# Amplify カスタムヘッダ（セキュリティ対策）
+# CSP 本体は Astro の security.csp が meta タグとして出力する。
+# ここでは meta では指定できない、またはヘッダでのみ有効なものを設定する。
+customHeaders:
+  - pattern: '**'
+    headers:
+      # HTTPS 強制（1 年）。サブドメインを巻き込まないよう includeSubDomains は付けない。
+      - key: Strict-Transport-Security
+        value: max-age=31536000
+      # MIME スニッフィング防止
+      - key: X-Content-Type-Options
+        value: nosniff
+      # iframe 埋め込み禁止（frame-ancestors は meta CSP では無効なためヘッダで指定）
+      - key: Content-Security-Policy
+        value: frame-ancestors 'none'
+      - key: X-Frame-Options
+        value: DENY
+      # リファラは同一オリジンのみフルパス送信
+      - key: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      # 使用しない強力な機能を明示的に無効化
+      - key: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()

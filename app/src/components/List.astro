@@ -5,11 +5,13 @@ import XIcon from '@assets/x.svg'
 import { Image } from 'astro:assets'
 
 // 各カードの情報。マークアップと分離してデータ化している。
+// key: section に付与するクラス名。アクセント色は style ブロック側で key ごとに定義する
+//      （style 属性を使うと CSP の style-src-attr 許可が必要になるため）。
 // descriptions: <p class="descr"> として出力する段落群。
 // link: <a class="link"> のリンク先。null の場合はリンク要素を出力しない。
 const cards = [
   {
-    accent: '#81A1C1',
+    key: 'github',
     icon: GithubIcon,
     alt: 'GitHub',
     iconClass: 'icon-github',
@@ -20,7 +22,7 @@ const cards = [
     link: { href: 'https://github.com/shennoki', rel: 'noopener noreferrer nofollow' },
   },
   {
-    accent: '#A3BE8C',
+    key: 'blog',
     icon: AlgorithmIcon,
     alt: 'BreathNote',
     iconClass: 'icon-breathnote',
@@ -29,7 +31,7 @@ const cards = [
     link: { href: 'https://blog.shinki.net/', rel: 'noopener noreferrer' },
   },
   {
-    accent: '#BF616A',
+    key: 'sns',
     icon: XIcon,
     alt: 'SNS',
     iconClass: 'icon-sns',
@@ -45,7 +47,7 @@ const cards = [
 <div class="container">
   {
     cards.map((card) => (
-      <section class="section" style={`--accent-color:${card.accent}`}>
+      <section class={`section ${card.key}`}>
         <div class="icon">
           <Image src={card.icon} alt={card.alt} class={card.iconClass} />
         </div>
@@ -81,6 +83,16 @@ const cards = [
     }
   }
   .section {
+    // カードごとのアクセント色（cards の key と対応）
+    &.github {
+      --accent-color: #81A1C1;
+    }
+    &.blog {
+      --accent-color: #A3BE8C;
+    }
+    &.sns {
+      --accent-color: #BF616A;
+    }
     width: 95%;
     max-width: 300px;
     padding: 1.5em 1.5em 5em;
