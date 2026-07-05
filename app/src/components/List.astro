@@ -4,68 +4,85 @@ import CloudIcon from '@assets/cloud.svg'
 import GithubIcon from '@assets/github.svg'
 import XIcon from '@assets/x.svg'
 import { Image } from 'astro:assets'
+
+// 各カードの情報。マークアップと分離してデータ化している。
+// descriptions: <p class="descr"> として出力する段落群。
+// note: <p class="descr-center"> として出力する中央寄せテキスト（リンクなしカード用。HTML エンティティを含むため set:html で出力）。
+// link: <a class="link"> のリンク先。null の場合はリンク要素を出力しない。
+const cards = [
+  {
+    accent: '#81A1C1',
+    icon: GithubIcon,
+    alt: 'GitHub',
+    iconClass: 'icon-github',
+    title: 'GITHUB',
+    descriptions: [
+      '基本的に成果物はここに置いています。',
+      'ポートフォリオ以外はだいたいプライベートリポジトリで管理しているので、あまり参考にならないかもしれませんが、ご容赦ください。',
+    ],
+    note: null,
+    link: { href: 'https://github.com/shennoki', rel: 'noopener noreferrer nofollow' },
+  },
+  {
+    accent: '#A3BE8C',
+    icon: AlgorithmIcon,
+    alt: 'BreathNote',
+    iconClass: 'icon-breathnote',
+    title: 'TECH BLOG',
+    descriptions: [
+      'フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。',
+      'わかりやすい記事を心掛けて更新しているので、ドキュメントの確認やバグフィックスのお供にどうぞ。',
+    ],
+    note: null,
+    link: { href: 'https://blog.shinki.net/', rel: 'noopener noreferrer' },
+  },
+  {
+    accent: '#EBCB8B',
+    icon: CloudIcon,
+    alt: 'Portfolio',
+    iconClass: 'icon-portfolio',
+    title: 'PORTFOLIO',
+    descriptions: [],
+    note: '整備中です&#128295;',
+    link: null,
+  },
+  {
+    accent: '#BF616A',
+    icon: XIcon,
+    alt: 'SNS',
+    iconClass: 'icon-sns',
+    title: 'SNS',
+    descriptions: [
+      '技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。',
+      'ご連絡はこちらからお願いいたします。',
+    ],
+    note: null,
+    link: { href: 'https://twitter.com/_shinnoki', rel: 'noopener noreferrer nofollow' },
+  },
+]
 ---
 
 <div class="container">
-  <section class="section" style="--accent-color:#81A1C1">
-    <div class="icon">
-      <Image src={GithubIcon} alt="GitHub" class="icon-github" />
-    </div>
-    <h2 class="title">GITHUB</h2>
-    <p class="descr">基本的に成果物はここに置いています。</p>
-    <p class="descr">
-      ポートフォリオ以外はだいたいプライベートリポジトリで管理しているので、あまり参考にならないかもしれませんが、ご容赦ください。
-    </p>
-    <div class="loader">
-      <div class="loader-inner1"></div>
-      <div class="loader-inner2"></div>
-      <div class="loader-inner3"></div>
-    </div>
-    <a href="https://github.com/shennoki" target="_blank" rel="noopener noreferrer nofollow" class="link"></a>
-  </section>
-
-  <section class="section" style="--accent-color:#A3BE8C">
-    <div class="icon">
-      <Image src={AlgorithmIcon} alt="BreathNote" class="icon-breathnote" />
-    </div>
-    <h2 class="title">TECH BLOG</h2>
-    <p class="descr">フロントエンドからバックエンドまで、フルスタックなWeb技術の話題や備忘録を掲載しています。</p>
-    <p class="descr">わかりやすい記事を心掛けて更新しているので、ドキュメントの確認やバグフィックスのお供にどうぞ。</p>
-    <div class="loader">
-      <div class="loader-inner1"></div>
-      <div class="loader-inner2"></div>
-      <div class="loader-inner3"></div>
-    </div>
-    <a href="https://blog.shinki.net/" target="_blank" rel="noopener noreferrer" class="link"></a>
-  </section>
-
-  <section class="section" style="--accent-color:#EBCB8B">
-    <div class="icon">
-      <Image src={CloudIcon} alt="Portfolio" class="icon-portfolio" />
-    </div>
-    <h2 class="title">PORTFOLIO</h2>
-    <p class="descr-center">整備中です&#128295;</p>
-    <div class="loader">
-      <div class="loader-inner1"></div>
-      <div class="loader-inner2"></div>
-      <div class="loader-inner3"></div>
-    </div>
-  </section>
-
-  <section class="section" style="--accent-color:#BF616A">
-    <div class="icon">
-      <Image src={XIcon} alt="SNS" class="icon-sns" />
-    </div>
-    <h2 class="title">SNS</h2>
-    <p class="descr">技術ブログの更新情報、記事に満たない小さな発見、日常の出来事をつぶやいています。</p>
-    <p class="descr">ご連絡はこちらからお願いいたします。</p>
-    <div class="loader">
-      <div class="loader-inner1"></div>
-      <div class="loader-inner2"></div>
-      <div class="loader-inner3"></div>
-    </div>
-    <a href="https://twitter.com/_shinnoki" target="_blank" rel="noopener noreferrer nofollow" class="link"></a>
-  </section>
+  {
+    cards.map((card) => (
+      <section class="section" style={`--accent-color:${card.accent}`}>
+        <div class="icon">
+          <Image src={card.icon} alt={card.alt} class={card.iconClass} />
+        </div>
+        <h2 class="title">{card.title}</h2>
+        {card.descriptions.map((descr) => (
+          <p class="descr">{descr}</p>
+        ))}
+        {card.note && <p class="descr-center" set:html={card.note} />}
+        <div class="loader">
+          <div class="loader-inner1" />
+          <div class="loader-inner2" />
+          <div class="loader-inner3" />
+        </div>
+        {card.link && <a href={card.link.href} target="_blank" rel={card.link.rel} class="link" />}
+      </section>
+    ))
+  }
 </div>
 
 <style lang="scss">

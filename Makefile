@@ -1,5 +1,3 @@
-CASE = tests/
-
 build:
 	docker compose -f .devcontainer/docker-compose.yml build --no-cache --force-rm
 up:
@@ -11,7 +9,7 @@ init:
 	@make up
 start:
 	@make up
-	docker compose -f .devcontainer/docker-compose.yml exec app npm run dev -- --host 0.0.0.0
+	docker compose -f .devcontainer/docker-compose.yml exec app npm run dev -- --host 0.0.0.0 --force
 restart:
 	@make down
 	@make up
@@ -24,5 +22,3 @@ ps:
 	docker compose -f .devcontainer/docker-compose.yml ps
 logs:
 	docker compose -f .devcontainer/docker-compose.yml logs
-test:
-	docker compose -f .devcontainer/docker-compose.yml exec app vendor/bin/phpunit -c tests/ --colors=always ${CASE}
