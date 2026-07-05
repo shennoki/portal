@@ -1,21 +1,16 @@
 ---
 import Footer from '@components/Footer.astro'
-import Header from '@components/Header.astro'
 import Main from '@components/Main.astro'
 import Layout from '@layouts/Layout.astro'
 
 const page = {
   title: 'SHINKI.NET',
   description:
-    'SHINKI.NETへようこそ。ここは、ポートフォリオを管理するガレージサイトや、備忘録をまとめた技術ブログなど、私が運営しているWebサイトの入口となるべく作られたポータルサイトです。',
-  schema: [],
+    'SHINKI.NETへようこそ。ここは、技術ブログをはじめ、私が運営しているWebサイトをまとめたポータルサイトです。',
 }
 ---
 
 <Layout page={page}>
-  <Header />
   <Main />
   <Footer />
 </Layout>
-
-<style lang="scss"></style>
