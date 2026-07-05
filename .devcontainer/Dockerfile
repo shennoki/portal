@@ -1,4 +1,4 @@
-FROM node:18.19.0-slim
+FROM node:24-slim
 WORKDIR /workspaces/container/app
 COPY ../app /app
 EXPOSE 4321
